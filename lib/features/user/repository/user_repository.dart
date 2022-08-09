@@ -3,6 +3,7 @@ import 'package:architecture_flutter/features/user/data/data_source/user_data_so
 import 'package:architecture_flutter/features/user/data/models/user_request_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class UserRepository {
   Future<Either<AppError, UserRequsetModel>> getUser(String endpoint);
@@ -25,3 +26,7 @@ class UserRepositoryImpl extends UserRepository {
     }
   }
 }
+
+final userRepoProvider = Provider<UserRepository>((ref) {
+  return UserRepositoryImpl(ref.watch(userDataSourceProvider));
+});
