@@ -14,7 +14,7 @@ class UserRequsetModel {
   factory UserRequsetModel.fromJson(Map<String, dynamic> json) {
     return UserRequsetModel(
       avatar: json['avatar'] ?? '',
-      email: json['email'] ?? "",
+      email: json['email'] ?? "hello bro",
       firstName: json['first_name'] ?? "",
       lastName: json['last_name'] ?? "",
     );

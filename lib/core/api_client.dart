@@ -6,7 +6,12 @@ class ApiClient {
   Future request(String endpoint) async {
     try {
       final response = await Dio(
-        BaseOptions(baseUrl: ApiConstant.baseUrl),
+        BaseOptions(
+          baseUrl: ApiConstant.baseUrl,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        ),
       ).get(endpoint);
       return response.data;
     } catch (e) {

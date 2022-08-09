@@ -3,16 +3,17 @@ import 'package:architecture_flutter/features/user/data/models/user_request_mode
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class UserDataSource {
-  Future<UserRequsetModel> getUser(String endpoint);
+  Future<UserRequsetModel> getUser();
 }
 
 class UserDataSourceImpl extends UserDataSource {
   UserDataSourceImpl(this.apiClient);
   ApiClient apiClient;
   @override
-  Future<UserRequsetModel> getUser(String endpoint) async {
-    final result = await apiClient.request(endpoint);
+  Future<UserRequsetModel> getUser() async {
+    final result = await apiClient.request('users/2');
     final data = result['data'];
+
     return UserRequsetModel.fromJson(data);
   }
 }

@@ -6,16 +6,17 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class UserRepository {
-  Future<Either<AppError, UserRequsetModel>> getUser(String endpoint);
+  Future<Either<AppError, UserRequsetModel>> getUser();
 }
 
 class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl(this.userDataSource);
   UserDataSource userDataSource;
   @override
-  Future<Either<AppError, UserRequsetModel>> getUser(String endpoint) async {
+  Future<Either<AppError, UserRequsetModel>> getUser() async {
     try {
-      final result = await userDataSource.getUser(endpoint);
+      final result = await userDataSource.getUser();
+
       return Right(result);
     } on DioError catch (e) {
       return Left(
