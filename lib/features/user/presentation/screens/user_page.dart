@@ -9,23 +9,41 @@ class UserPage extends ConsumerWidget {
     final data = ref.watch(userControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('title'),
-      ),
-      body: data.when(
-        data: (d) {
-          return Column(
-            children: [
-              Text(d.email),
-              Text(d.firstName),
-            ],
-          );
-        },
-        error: (err, s) => Text(err.toString()),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
+        appBar: AppBar(
+          title: const Text('title'),
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            const Text('Hello'),
+            data.when(
+                data: (d) {
+                  return Column(
+                    children: [
+                      Text(d.email),
+                      Text(d.firstName),
+                    ],
+                  );
+                },
+                error: (err, s) => const Text(''),
+                loading: () => const Text(''))
+          ],
+        )
+
+        // data.when(
+        //   data: (d) {
+
+        //     return Column(
+        //       children: [
+        //         Text(d.email),
+        //         Text(d.firstName),
+        //       ],
+        //     );
+        //   },
+        //   error: (err, s) => Text(err.toString()),
+        //   loading: () => const Center(
+        //     child: CircularProgressIndicator(),
+        //   ),
+        // ),
+        );
   }
 }

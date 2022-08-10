@@ -3,16 +3,24 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ApiClient {
-  Future request(String endpoint) async {
+  Future request(String endpoint,
+      {String type = 'get', Map<String, dynamic> postData = const {}}) async {
     try {
-      final response = await Dio(
+      final dio = Dio(
         BaseOptions(
           baseUrl: ApiConstant.baseUrl,
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         ),
-      ).get(endpoint);
+      );
+
+      final response = type == 'get'
+          ? await dio.get(endpoint)
+          : await dio.post(
+              endpoint,
+              data: postData,
+            );
       return response.data;
     } catch (e) {
       throw Exception(e.toString());

@@ -1,4 +1,4 @@
-import 'package:architecture_flutter/features/user/presentation/screens/user_page.dart';
+import 'package:architecture_flutter/features/user/presentation/screens/create_user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const UserPage(),
+      home: const CreateUserPage(),
     );
-  }
+  } 
 }
