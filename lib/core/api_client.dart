@@ -22,8 +22,8 @@ class ApiClient {
               data: postData,
             );
       return response.data;
-    } catch (e) {
-      throw Exception(e.toString());
+    } on DioError catch (e) {
+      throw Exception(e.message);
     }
   }
 }
