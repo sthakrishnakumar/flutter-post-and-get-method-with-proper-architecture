@@ -25,7 +25,9 @@ class UserPage extends ConsumerWidget {
                   );
                 },
                 error: (err, s) => const Text(''),
-                loading: () => const Text(''))
+                loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ))
           ],
         )
 

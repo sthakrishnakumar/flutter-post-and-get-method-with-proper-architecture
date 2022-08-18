@@ -87,6 +87,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                           setState(() {
                             isLoading = false;
                           });
+                          // ignore: use_build_context_synchronously
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               backgroundColor: Colors.green,
